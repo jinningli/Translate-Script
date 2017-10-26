@@ -1,9 +1,9 @@
 import translate.MapleTranslate;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -12,8 +12,50 @@ import java.io.FileWriter;
  */
 public class Main {
     final static int aln = 15;
+    static Map<String, String> storedData = new HashMap<>();
+
+    public static void loadMap() throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("data.maple"));
+        String sign;
+        String word;
+        String cont = "";
+        sign = br.readLine();
+        while (Objects.equals(sign, "&")){
+            sign = br.readLine();
+            word = sign;
+            while(!Objects.equals(sign, "&")) {
+                sign = br.readLine();
+                if(sign == null || Objects.equals(sign, "&"))
+                    break;
+                cont += sign;
+                cont += '\n';
+            }
+//            System.out.println(word);
+            storedData.put(word, cont);
+            if(sign == null)
+                break;
+        }
+        br.close();
+        System.out.println("---------- Load Map Success! ---------\n");
+    }
+
+    public static void saveMap() throws Exception {
+        System.out.println("---------- Saving Map... ---------\n");
+        BufferedWriter bw = new BufferedWriter(new FileWriter("data.maple"));
+        for (Map.Entry ent:storedData.entrySet()){
+            bw.write("&\n");
+            bw.write((String)ent.getKey());
+            bw.write('\n');
+            bw.write((String)ent.getValue());
+            bw.write('\n');
+        }
+        bw.close();
+        System.out.println("---------- Save Map Success! ---------\n");
+    }
+
     public static void main(String[] args) throws Exception {
         MapleTranslate obj = new MapleTranslate();
+//        Main.loadMap();
         BufferedReader br = new BufferedReader(new FileReader("input.txt"));
         BufferedWriter bw = new BufferedWriter(new FileWriter("output.txt"));
 
@@ -24,7 +66,15 @@ public class Main {
         String line;
         int l = 0;
         while((line = br.readLine()) != null){
+            if(Objects.equals(line, ""))
+                continue;
             l ++;
+//            if (storedData.containsKey(line)){
+//                System.out.println("[Processing][Offline]\t(" + l + ") " + line + "");
+//                res.append(storedData.get(line));
+//                res.append("\n");
+//                continue;
+//            }
             System.out.println("[Processing]\t(" + l + ") " + line + "");
             String nowline = line;
             while (nowline.length() < aln){
@@ -37,6 +87,7 @@ public class Main {
                 res.append(nowline + "  [ERROR: Not Found]");
                 err += "(" + l + ") " + line + "\n";
             }
+//            storedData.put(line, nowline);
             res.append("\n\n");
         }
         if(err.length() == 0) {
@@ -51,6 +102,8 @@ public class Main {
         bw.write(res.toString());
         br.close();
         bw.close();
+
+//        Main.saveMap();
 
         System.out.println("Press Any Key to Show Result...");
         try

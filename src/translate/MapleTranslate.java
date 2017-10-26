@@ -34,6 +34,7 @@ public class MapleTranslate {
         params.put("appKey", appKey);
 
         jsonString = requestForHttp("https://openapi.youdao.com/api", params);
+//        System.out.println(jsonString);
     }
 
     public String generateResult(){
@@ -41,7 +42,21 @@ public class MapleTranslate {
         JsonElement data = new JsonParser().parse(jsonString);
         JsonObject obj = data.getAsJsonObject();
         obj = obj.getAsJsonObject("basic");
-        JsonArray expl = obj.getAsJsonArray("explains");
+        JsonArray expl = null;
+        if(obj == null){
+            obj = data.getAsJsonObject();
+            JsonArray webarr = obj.getAsJsonArray("web");
+            if(webarr == null){
+                throw new NullPointerException();
+            }
+            obj = webarr.get(0).getAsJsonObject();
+            if(obj == null){
+                throw new NullPointerException();
+            }
+            expl = obj.getAsJsonArray("value");
+        }else {
+            expl = obj.getAsJsonArray("explains");
+        }
         for(int i = 0; i < expl.size(); i ++){
             res += expl.get(i).getAsString();
             if(i != expl.size()-1){

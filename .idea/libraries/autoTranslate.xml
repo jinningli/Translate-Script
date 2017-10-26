@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="autoTranslate">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/artifacts/OnlineTranslation_jar/autoTranslate.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

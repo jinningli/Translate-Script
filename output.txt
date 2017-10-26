@@ -1,14 +1,20 @@
-interesting      adj. 有趣的；引起兴趣的，令人关注的
+单词本              vocabulary book
+                 word book
 
-happy            adj. 幸福的；高兴的；巧妙的
-                 n. (Happy)人名；(英、瑞典、喀)哈皮
+abrupt           adj. 生硬的；突然的；唐突的；陡峭的
 
-dear             n. 亲爱的人
-                 adj. 亲爱的；尊敬的；昂贵的
-                 adv. 高价地；疼爱地
-                 int. 哎呀
-                 n. (Dear)人名；(英、西)迪尔
+erupt            vi. 爆发；喷出；发疹；长牙
+                 vt. 爆发；喷出
 
-darling          n. 心爱的人；亲爱的
-                 n. (Darling)人名；(英)达林
+rupture          n. 破裂；决裂；疝气
+                 vt. 使破裂；断绝；发生疝
+                 vi. 破裂；发疝气
+
+confess          vi. 承认；坦白；忏悔；供认
+                 vt. 承认；坦白；忏悔；供认
+
+accelerate       vt. 使……加快；使……增速
+                 vi. 加速；促进；增加
+
+hang on          坚持下去；不挂断；握住不放
 

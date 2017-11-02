@@ -88,7 +88,7 @@ public class Main {
                 err += "(" + l + ") " + line + "\n";
             }
             storedData.put(line, nowline);
-            res.append("\n\n");
+            res.append("\n");
         }
         if(err.length() == 0) {
             System.out.println("---------- Word Not Found ---------\nAll Success.");
